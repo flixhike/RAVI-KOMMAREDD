@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravi Kommareddy - Digital Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-container {
+            background: white;
+            border-radius: 30px;
+            border: 8px solid #d4c5a9;
+            max-width: 480px;
+            width: 100%;
+            padding: 40px 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .header-title {
+            color: #5a6b7d;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            max-width: 100%;
+            width: 300px;
+            height: auto;
+            margin-bottom: 0px;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 6px solid #c9a961;
+            object-fit: cover;
+        }
+
+        .save-button {
+            position: absolute;
+            bottom: 10px;
+            /*right: 0px;*/
+            background: #d4c5a9;
+            color: #2c3e50;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .save-button:hover {
+            background: #c9a961;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .name-section {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 32px;
+            color: #1a3a52;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #c9a961;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4c5a9, transparent);
+            margin: 25px 0;
+        }
+
+        .contact-info {
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            color: #2c3e50;
+            font-size: 17px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #c9a961;
+            transform: translateX(5px);
+        }
+
+        .icon {
+            width: 28px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .phone-icon {
+            fill: #c9a961;
+        }
+
+        .email-icon {
+            fill: #c9a961;
+        }
+
+        .web-icon {
+            fill: #c9a961;
+        }
+
+        .location-icon {
+            fill: #c9a961;
+        }
+
+        .linkedin-icon {
+            fill: #0077b5;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 13px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 600px) {
+            .card-container {
+                padding: 30px 25px;
+            }
+            
+            .logo {
+                width: 280px;
+            }
+            
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .save-button {
+                bottom: 0;
+                right: -10px;
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+            
+            .name {
+                font-size: 26px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="header">
+            <div class="header-title">Digital Card</div>
+        </div>
+
+        <div class="logo-section">
+            <!-- You'll need to upload the actual Elysium logo image here -->
+            <!-- Replace this src with the path to your logo image -->
+            <img src="elysium_logoo.png" alt="Elysium Capital Advisory" class="logo" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22350%22 height=%22100%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22350%22 height=%22100%22 rx=%2210%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23999%22%3EELYSIUM LOGO%3C/text%3E%3C/svg%3E'">
+        </div>
+
+        <div class="logo-section">
+            <div class="profile-container">
+                <!-- You'll need to upload Ravi's photo here -->
+                <!-- Replace this src with the path to the profile photo -->
+                <img src="ravi.jpeg" alt="Ravi Kommareddy" class="profile-image"
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22%3E%3Crect fill=%22%23d4c5a9%22 width=%22220%22 height=%22220%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2280%22 fill=%22%231a3a52%22%3ERK%3C/text%3E%3C/svg%3E'">
+                <button class="save-button" onclick="saveContact()">Save Contact</button>
+            </div>
+        </div>
+
+        <div class="name-section">
+            <div class="name">RAVI KOMMAREDDY</div>
+            <div class="title">Vice President – Acquisition</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-info">
+            <a href="tel:+919966663990" class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="phone-icon">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </span>
+                <span>+91 99666 63990</span>
+            </a>
+
+            <a href="tel:+912225673377" class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="phone-icon">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </span>
+                <span>+91 22 2567 3377</span>
+            </a>
+
+            <a href="mailto:ravi@elysium.capital" class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="email-icon">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </span>
+                <span>ravi@elysium.capital</span>
+            </a>
+
+            <a href="https://www.elysium.capital" target="_blank" class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="web-icon">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+                    </svg>
+                </span>
+                <span>www.elysium.capital</span>
+            </a>
+
+            <div class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="location-icon">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </span>
+                <span>Mumbai | Hyderabad | Pune</span>
+            </div>
+
+            <a href="https://linkedin.com/in/ravikommarreddy" target="_blank" class="contact-item">
+                <span class="icon">
+                    <svg viewBox="0 0 24 24" class="linkedin-icon">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                </span>
+                <span>linkedin.com/in/ravikommarreddy</span>
+            </a>
+        </div>
+
+        <div class="footer-text">
+            This is a digital business card — tap any detail to connect
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        function saveContact() {
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Ravi Kommareddy
+ORG:Elysium Capital Advisory
+TITLE:Vice President - Acquisition
+TEL;TYPE=CELL:+919966663990
+TEL;TYPE=WORK:+912225673377
+EMAIL:ravi@elysium.capital
+URL:www.elysium.capital
+ADR:;;Mumbai, Hyderabad, Pune;;;India
+X-SOCIALPROFILE;TYPE=linkedin:linkedin.com/in/ravikommarreddy
+END:VCARD`;
+
+            const blob = new Blob([vCard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Ravi_Kommareddy_Elysium.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            showNotification('Contact saved successfully!');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Make contact items clickable
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.href && this.href.startsWith('tel:')) {
+                    showNotification('Calling ' + this.querySelector('span:last-child').textContent);
+                } else if (this.href && this.href.startsWith('mailto:')) {
+                    showNotification('Opening email client...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
